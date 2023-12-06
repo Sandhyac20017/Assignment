@@ -1,0 +1,66 @@
+HARD 3:
+Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
+
+
+ALGORITHM:
+		1. Input: Take an integer n as input from the user.
+
+		2. Function countDigitOne:
+
+		                                     Initialize count as 0 to store the total count of '1's.
+	                                                   Loop from 1 to n.
+                    
+                            For each number in the loop:
+                                                                       Call countOnesInNumber method to count '1's in that number.
+                                                                       Add the count of '1's in that number to the overall count. 
+
+                            3.Function countOnesInNumber:
+
+                                                                       Initialize count as 0 to count '1's in a number.
+                                                                      While the number (num) is greater than 0:
+                                                                      Check each digit of num by taking the remainder when divided by 10 (num % 10).
+                                                                      If the digit is equal to 1, increment the count.
+                                                                      Divide the number by 10 to remove the last digit.
+                                                                      Return the final count of '1's in the given number.
+
+
+CODE:
+
+import java.util.Scanner;
+
+public class CountDigitOne {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer n: ");
+        int n = scanner.nextInt();
+
+       
+        int result = countDigitOne(n);
+        System.out.println("Output: " + result);
+        
+       
+        scanner.close();
+    }
+
+    public static int countDigitOne(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            count += countOnesInNumber(i);
+        }
+        return count;
+    }
+
+   
+    private static int countOnesInNumber(int num) {
+        int count = 0;
+        while (num > 0) {
+            if (num % 10 == 1) {
+                count++;
+            }
+            num /= 10;
+        }
+        return count;
+    }
+}

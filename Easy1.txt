@@ -1,0 +1,61 @@
+Easy 1:
+Given a string s consisting of words and spaces, return the length of the last word in the string.
+
+
+ALGORITHM:
+	
+
+
+		 1.Create a Scanner object to get input from the user
+		 2.Prompt the user to enter a string
+ 		 3.Call the function to get the length of the last word
+		 4.Display the result	
+	               5.Close the scanner to avoid resource leak
+		 6.Trim any trailing spaces
+		 7.Find the last space in the trimmed string
+		 8.If there are no spaces, return the length of the entire string
+		 9.Return the length of the last word
+		
+   	
+
+CODE:
+
+
+
+
+
+import java.util.Scanner;
+
+public class LastWordLength {
+    public static void main(String[] args) {
+      
+        Scanner scanner = new Scanner(System.in);
+
+        
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+       
+        int length = lengthOfLastWord(input);
+
+
+        System.out.println("Length of the last word: " + length);
+
+        scanner.close();
+    }
+
+    public static int lengthOfLastWord(String s) {
+       
+        s = s.trim();
+
+        int lastSpaceIndex = s.lastIndexOf(' ');
+
+       
+        if (lastSpaceIndex == -1) {
+            return s.length();
+        }
+
+       
+        return s.length() - lastSpaceIndex - 1;
+    }
+}
